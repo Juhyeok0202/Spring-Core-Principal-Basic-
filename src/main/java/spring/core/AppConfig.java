@@ -11,7 +11,7 @@ import spring.core.member.MemoryMemberRepository;
 import spring.core.order.OrderService;
 import spring.core.order.OrderServiceImpl;
 
-@Configuration
+@Configuration // CGLIB기술을 사용하여 (의존 관계 주입이 필요해서 직접 호출할 때도)싱글톤을 가능케 함.(빈 등록은 됨)
 public class AppConfig { /*연극 기획자(DI Container)*/
     /*
     * 관심사 분리를 위한 공연 기획자(외부 의존 관계 주입 도우미)
@@ -21,11 +21,14 @@ public class AppConfig { /*연극 기획자(DI Container)*/
     * */
     @Bean //(Register to Spring Container)
     public MemberService memberService(){
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
-    public static MemberRepository memberRepository() {
+    public MemberRepository memberRepository() {
+        //configurationTest에서 1번만 호출됨. 싱글톤 보장해줌.
+        System.out.println("call AppConfig.memberRepository");
         // 구성의 역할을 분리
         // DB로 바꿀 때 아래 코드만 바꾸면 됨.
         return new MemoryMemberRepository();
@@ -33,6 +36,7 @@ public class AppConfig { /*연극 기획자(DI Container)*/
 
     @Bean
     public OrderService orderService() {
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
