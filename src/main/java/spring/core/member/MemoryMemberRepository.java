@@ -1,8 +1,11 @@
 package spring.core.member;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class MemoryMemberRepository implements MemberRepository{
 
     // 동시성 해시맵을 써야 좋긴 함.

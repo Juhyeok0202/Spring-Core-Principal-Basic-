@@ -1,14 +1,18 @@
 package spring.core.order;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import spring.core.discount.DiscountPolicy;
 import spring.core.member.Member;
 import spring.core.member.MemberRepository;
 
+@Component //Register Component
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    @Autowired // Automatic Dependency Injection
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         // 오직 인터페이스에만 의존함(생성자 주입)
         // 외부에서 의존성을 주입함 -> DI(Dependency Injection)(의존관계 주입)
