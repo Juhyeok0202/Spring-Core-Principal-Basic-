@@ -1,5 +1,7 @@
 package spring.core.order;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class Order {
 
     private Long memberId;

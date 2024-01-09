@@ -2,6 +2,7 @@ package spring.core;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import spring.core.discount.DiscountPolicy;
 import spring.core.discount.RateDiscountPolicy;
 import spring.core.member.MemberRepository;
