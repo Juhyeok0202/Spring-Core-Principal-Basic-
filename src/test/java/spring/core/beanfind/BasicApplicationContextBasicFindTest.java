@@ -12,7 +12,7 @@ import spring.core.member.MemberServiceImpl;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ApplicationContextBasicFindTest {
+public class BasicApplicationContextBasicFindTest {
 
     AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 
